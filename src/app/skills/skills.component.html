@@ -1,0 +1,87 @@
+<div class="uk-container">
+  <div class="uk-padding uk-padding-remove-horizontal">
+    <table class="uk-table uk-table-striped">
+      <thead>
+      <tr>
+        <th>key</th>
+        <th>الأسم</th>
+        <th>الهاتف</th>
+        <th>المهارات</th>
+        <th>المدينة</th>
+        <th>السعر</th>
+        <th>ملاحظات</th>
+        <th colspan="2" class="uk-text-center">اعدادات</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of itemArray">
+        <td>{{item.$key}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.phone}}</td>
+        <td>{{item.skill}}</td>
+        <td>{{item.province}}</td>
+        <td>{{item.price}}</td>
+        <td>{{item.comment}}</td>
+        <td>
+          <button class="uk-button uk-button-primary uk-button-small" type="button" uk-toggle = 'target: #modal_2'
+                  (click)="clickEdit(item.$key ,item.name ,  item.phone , item.skill ,item.province , item.price , item.comment )"
+          >Edit
+          </button>
+        </td>
+        <td>
+          <button class="uk-button uk-button-danger uk-button-small" (click)="clickDelete(item.$key)" >Delete
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div id="modal_2" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body">
+    <h2 class="uk-modal-title">Edit</h2>
+    <fieldset class="uk-fieldset">
+      <div class="uk-margin uk-hidden">
+        <input class="uk-input" type="text" placeholder="key" name="key" [(ngModel)]="updateData.$key" >
+      </div>
+      <div class="uk-margin">
+        <input class="uk-input" type="text" placeholder="اسمك" name="name" [(ngModel)]="updateData.name" >
+      </div>
+
+      <div class="uk-margin">
+        <input class="uk-input" type="text" placeholder="رقم الهاتف" name="phone"  [(ngModel)]="updateData.phone">
+      </div>
+
+      <div class="uk-margin">
+        <input class="uk-input" type="text" placeholder="المهارة" name="skill"  [(ngModel)]="updateData.skill">
+      </div>
+
+      <!--<div class="uk-margin">-->
+      <!--<input class="uk-input" type="text" placeholder="المحافظة" name="province">-->
+      <!--</div>-->
+      <div class="uk-margin">
+        <select  [(ngModel)]="updateData.province" class="uk-select">
+          <option > </option>
+          <option value="فلسطين">فلسطين</option>
+          <option value="الأردن">الأردن</option>
+          <option value="السعودية">السعودية</option>
+        </select>
+      </div>
+      <div class="uk-margin">
+        <input class="uk-input" type="text" placeholder="السعر" name="price"  [(ngModel)]="updateData.price">
+
+        <div class="uk-margin">
+          <textarea class="uk-textarea" rows="5" placeholder="ملاحظات" name="comment"  [(ngModel)]="updateData.comment"></textarea>
+        </div>
+
+      </div>
+    </fieldset>
+    <p class="uk-text-right">
+      <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+      <button class="uk-button uk-button-primary uk-modal-close" type="button" (click)="saveEdit()">Save</button>
+    </p>
+  </div>
+</div>
+
+

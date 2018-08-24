@@ -1,0 +1,21 @@
+<div class="uk-container">
+  <div class="uk-padding uk-padding-remove-horizontal">
+    <fieldset class="uk-fieldset">
+
+      <legend class="uk-legend">التسجيل</legend>
+
+      <div class="uk-margin">
+        <input class="uk-input" type="email" placeholder="بريد الكتروني" name="email" [(ngModel)]="email">
+      </div>
+
+      <div class="uk-margin">
+        <input class="uk-input" type="password" placeholder="كلمة المرور" name="password" [(ngModel)]="password">
+      </div>
+
+      <div class="uk-margin">
+        <button class="uk-button uk-button-primary" (click)="myRegister()">تسجيل</button>
+      </div>
+
+    </fieldset>
+  </div>
+</div>
